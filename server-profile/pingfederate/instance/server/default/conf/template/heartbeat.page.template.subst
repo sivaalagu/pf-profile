@@ -50,7 +50,7 @@ Enable the pf.heartbeat.system.monitoring option in run.properties to render a b
 monitoring information.
 *#
 
-
+heartbeatSystemMonitoring="false"
 #if($heartbeatSystemMonitoring)
 #set( $Content-Type = "application/json" )
 #set($resultKeys = [
