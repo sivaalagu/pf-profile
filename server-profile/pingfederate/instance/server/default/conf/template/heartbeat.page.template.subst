@@ -50,46 +50,6 @@ Enable the pf.heartbeat.system.monitoring option in run.properties to render a b
 monitoring information.
 *#
 
-heartbeatSystemMonitoring="false"
-#if($heartbeatSystemMonitoring)
-#set( $Content-Type = "application/json" )
-#set($resultKeys = [
-    "atm.*.token.map.size",
-    "idp.session.registry.session.map.size",
-    "response.concurrency.statistics.*.percentile",
-    "response.concurrency.statistics.max",
-    "response.concurrency.statistics.mean",
-    "response.concurrency.statistics.min",
-    "response.statistics.count",
-    "response.statistics.window.seconds",
-    "response.time.statistics.*.percentile",
-    "response.time.statistics.max",
-    "response.time.statistics.mean",
-    "response.time.statistics.min",
-    "session.state.attribute.map.size",
-    "sp.session.registry.session.map.size",
-    "total.failed.transactions",
-    "total.transactions"])
 
-{"items":[{
-      "cpu.load": "$monitor.getCpuLoad('###.##')",
-      "total.jvm.memory": "$monitor.getTotalJvmMemory('MB') MB",
-      "free.jvm.memory": "$monitor.getFreeJvmMemory('MB') MB",
-      "used.jvm.memory": "$monitor.getUsedJvmMemory('MB') MB",
-      "total.physical.system.memory": "$monitor.getTotalPhysicalSystemMemory('GB') GB",
-      "total.free.physical.system.memory": "$monitor.getTotalFreePhysicalSystemMemory('MB') MB",
-      "total.used.physical.system.memory": "$monitor.getTotalUsedPhysicalSystemMemory('GB') GB",
-      "number.of.cpus": "$monitor.getNumberOfCpus()",
-#set ( $map = $monitor.getResults($resultKeys) )
-#set ( $size = $map.size() )
-#set ( $count = 0)
-#foreach( $key in $map.keySet() )
-      #set ( $count =  $count + 1)
-      "${key}": "$map.get($key)"#if( $count < $size ),#end
-#end
-}]}
-
-#else
 #set( $Content-Type = "text/html" )
 OK
-#end
