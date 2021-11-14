@@ -50,6 +50,5 @@ Enable the pf.heartbeat.system.monitoring option in run.properties to render a b
 monitoring information.
 *#
 
-
 #set( $Content-Type = "text/html" )
-OK
+Version 0.0.1
