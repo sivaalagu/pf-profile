@@ -51,4 +51,4 @@ monitoring information.
 *#
 
 #set( $Content-Type = "text/html" )
-Pull at startup: Version 1.0
+Pull at startup: Version 1.1
